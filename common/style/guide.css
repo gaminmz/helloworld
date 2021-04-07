@@ -6,7 +6,7 @@
 [class^="box-btn"]{text-align:center;}
 [class^="box-btn-right"]{text-align:right;}
 [class^="box-btn-left"]{text-align:left;}
-[class^="btn"]{overflow:hidden;display:inline-block;position:relative;margin:0 7px;padding:3px 15px;line-height:28px;font-size:14px;text-align:center;}
+[class^="btn"]{overflow:hidden;display:inline-block;position:relative;padding:3px 15px;line-height:28px;font-size:14px;text-align:center;}
 [class^="btn"]:before{display:inline-block;content:"";position:absolute;left:0;top:0;width:0%;height:100px;background-color:rgba(255,255,255,.15);transform:skewx(20deg);transition:width .3s ease-out;}
 [class^="btn"]:hover:before{width:140%;}
 [class^="btn"][class*="text"]:before,
@@ -89,12 +89,12 @@
 [class^="box-input-flex"] [class^="input"]{flex:1;}
 [class^="box-input-flex"] [class^="input"] + [class^="btn"]{margin-left:5px;}
 .box-tableform [class^="box-input"] + [class^="box-input"]{margin-top:5px;}
-.bul-must{display:inline-block;top:-4px;width:4px;height:4px;margin:-3px -4px 0 0;background-color:#ea4335;border-radius:100%;font-size:0;}
+.bul-must{display:inline-block;top:-4px;width:4px;height:4px;margin:-3px -4px 0 0;background-color:#ea4335;border-radius:100%;font-size:0;vertical-align:top;}
 .box-tableform [class^="box-btn"]{margin-top:15px;}
 .box-tableform ins,
 .box-input small{display:block;margin-top:6px;padding-left:13px;color:rgba(0,0,0,.6);font-size:12px;line-height:1.3;text-decoration:none;}
 .box-tableform ins:before,
-.box-input small:before{display:inline-block;content:"∨";width:10px;margin-left:-10px;}
+.box-input small:before{display:inline-block;content:"";width:7px;height:5px;margin:2px 3px 0 -11px;border-left:1px solid;border-bottom:1px solid;transform:rotate(-45deg);vertical-align:top;}
 .box-tableform ins{color:var(--point-color-negative);}
 @media (max-width:459px){
   .box-tableform{width:100%;box-sizing:border-box;}
@@ -120,8 +120,8 @@
 .fluid-button input:before{width:100%;height:100%;padding:3px;border-radius:0;content:attr(data-text);font-size:14px;box-sizing:border-box;}
 .fluid-button input:checked:before{width:calc(100% - 6px);height:calc(100% - 6px);padding:1px 0 2px 0;color:#ffffff;}
 [class*="fluid-item"]{display:flex;flex-wrap:wrap;}
-[class*="fluid-item"] label{display:block;padding-left:45px;}
-[class*="fluid-item"] label>input{margin-left:-45px;margin-right:5px;}
+[class*="fluid-item"] label{display:block;padding-left:33px;}
+[class*="fluid-item"] label>input{margin-left:-33px;margin-right:5px;}
 [class*="fluid-item-column"] label{flex:1 1 70px;}
 [class*="fluid-item-row"] label{flex:0 0 auto;width:100%;box-sizing:border-box;}
 [class*="fluid-item-row"] label:not(:first-of-type){margin-top:15px;}
