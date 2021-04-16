@@ -6,57 +6,51 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi">
 		<meta property="og:type" content="website" />
-    <meta property="og:title" content="position:sticky" />
+		<meta property="og:title" content="position:sticky" />
 		<link rel="stylesheet" href="/common/style/default.css">
 		<link rel="stylesheet" href="/common/style/NotoSansKR.css">
 		<style type="text/css">
-			body{padding:0px;}
 			.content{position:relative;width:700px;margin:0 auto;}
 			.content:after{display:block;content:"";clear:both;}
 			.box{overflow-y:scroll;float:left;width:260px;height:260px;background-color:skyblue;position:fixed;top:0px;}
 			.article{float:right;width:400px;background-color:pink;}
 			.footer{height:1000px;background-color:wheat;}
-
 			@supports (position: sticky){
-				.box{position:sticky;top:0px;}
+			.box{position:sticky;top:0px;}
 			}
 			@supports not (position: sticky){
-				.content{background-color:red;} /* ie is not working */
+			.content{background-color:red;} /* ie is not working */
 			}
-
 		</style>
 		<script src="/common/js/jquery-3.3.1.min.js" type="text/javascript"></script>
 		<script>
-			
-			$(function(){
-				var content = document.querySelector("#Content"),
+		$(function(){
+			var content = document.querySelector("#Content"),
 					move = document.querySelector("#Move"),
 					contentH = $(content).outerHeight(),
 					moveH = $(move).outerHeight(),
 					blankH = (contentH - moveH)
-				
 
-				$(window).scroll(function(){
-					var contentBox = $(window).scrollTop(),
-					fixTop = (blankH - contentBox)
-					console.log(contentBox)
-					if(contentBox > blankH){
-						$(".box").css('top',fixTop+'px')
-					}else{
-						$(".box").css('top','0px')
-					}
-				});
-
+			$(window).scroll(function(){
+				var contentBox = $(window).scrollTop(),
+				fixTop = (blankH - contentBox)
+				console.log(contentBox)
+				if(contentBox > blankH){
+				$(".box").css('top',fixTop+'px')
+				}else{
+				$(".box").css('top','0px')
+				}
 			});
+		});
 		</script>
 	</head>
 	<body>
 
-		<section class="content" id="Content">
-			<article class="box" id="Move"></article>
-			<article class="article" style="height:2000px;"></article>
-		</section>
-		<section class="footer"></section>
+	<section class="content" id="Content">
+	<article class="box" id="Move"></article>
+	<article class="article" style="height:2000px;"></article>
+	</section>
+	<section class="footer"></section>
 
 	</body>
 </html>
