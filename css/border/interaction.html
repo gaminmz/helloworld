@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>css > border interaction</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi">
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="border interaction" />
+		<link rel="stylesheet" href="/common/style/default.css">
+		<link rel="stylesheet" href="/common/style/NotoSansKR.css">
+		<style type="text/css">
+			body{padding:30px;}
+			.box{display:inline-block;overflow:hidden;position:relative;width:300px;height:300px;margin-right:30px;}
+			.box img{width:300px;height:300px;transition:all ease 0.8s;background-color:#f9f9f9;}
+			.box:before,
+			.box:after,
+			.box figure:before,
+			.box figure:after{display:block;content:"";position:absolute;transition:all ease 0.3s;z-index:1;}
+
+			.box.type-a:before{top:0px;left:0;width:0;height:4px;}
+			.box.type-a:after{top:0px;right:0;width:4px;height:0px;}
+			.box.type-a figure:before{bottom:0;right:0;width:0px;height:4px;}
+			.box.type-a figure:after{bottom:0;left:0;width:4px;height:0px;}
+			.box.type-a:hover img{filter:sepia(30%);transform-origin:50% 50%;transform:scale(1.12);}
+			.box.type-a:hover:before{width:100%;background:-webkit-linear-gradient(left, #74c4f1 0%, #b597b0 100%);}
+			.box.type-a:hover:after{height:100%;background:-webkit-linear-gradient(top, #b597b0 0%, #f36c71 100%);transition-delay:0.3s;}
+			.box.type-a:hover figure:before{width:100%;background:-webkit-linear-gradient(left, #b299b2 0%, #f36c71 100%);transition-delay:0.6s;}
+			.box.type-a:hover figure:after{height:100%;background:-webkit-linear-gradient(top, #74c4f1 0%, #b299b2 100%);transition-delay:0.9s;}
+
+			.box.type-b:before,
+			.box.type-b:after,
+			.box.type-b figure:before,
+			.box.type-b figure:after{display:block;content:"";position:absolute;transition:all ease 0.3s;z-index:1;}
+			.box.type-b:before{top:0;left:0;width:0;height:1px;}
+			.box.type-b:after{right:0;bottom:0;width:1px;height:0;}
+			.box.type-b figure:before{top:0;left:0;width:1px;height:0;}
+			.box.type-b figure:after{right:0;bottom:0;width:0;height:1px;}
+			.box.type-b:hover:before,
+			.box.type-b:hover:after,
+			.box.type-b:hover figure:before,
+			.box.type-b:hover figure:after{background-color:#000000;}
+			.box.type-b:hover:before{width:100%;}
+			.box.type-b:hover:after{height:100%;}
+			.box.type-b:hover figure:before{height:100%;}
+			.box.type-b:hover figure:after{width:100%;}
+
+		</style>
+		<script src="/common/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+		<script>
+		$(function(){
+			
+		});
+		</script>
+	</head>
+	<body>
+
+		<div class="box type-a">
+			<figure class="figure">
+				<img src="images/@temp.jpg" alt="type-a">
+			</figure>
+		</div>
+
+		<div class="box type-b">
+			<figure class="figure">
+				<img src="images/@temp.jpg" alt="type-b">
+			</figure>
+		</div>
+
+	</body>
+</html>
