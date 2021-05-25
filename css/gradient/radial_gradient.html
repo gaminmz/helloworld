@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>css > radial gradient</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi">
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="radial gradient" />
+		<link rel="stylesheet" href="/common/style/default.css">
+		<link rel="stylesheet" href="/common/style/NotoSansKR.css">
+		<link href="https://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet">
+		<style type="text/css">
+			body{height:100vh;margin:0;background-color:#246756;}
+			.element{width:100vw;height: 100vh;
+        background:
+        radial-gradient(
+        farthest-side at bottom left,
+        rgba(255, 0, 255, 0.5),
+        transparent
+        ),
+        radial-gradient(
+        farthest-corner at bottom right,
+        rgba(255, 50, 50, 0.5),
+        transparent 400px
+        );
+      }
+      h1{position:absolute;top:20%;left:5%;font-family:'Syncopate',sans-serif;font-size:3rem;text-transform:uppercase;font-weight:400;
+      background:radial-gradient(
+        circle farthest-corner at center top,
+        #cccccc, transparent) no-repeat;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
+    <script src="/common/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script>
+    $(function(){
+
+    });
+    </script>
+	</head>
+	<body>
+		<div class="element"></div>
+		<h1>The quick brown fox jumps over the lazy dog</h1>
+	</body>
+</html>
