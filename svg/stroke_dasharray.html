@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>svg > stroke dasharray</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi">
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="border interaction" />
+		<link rel="stylesheet" href="/common/style/default.css">
+		<link rel="stylesheet" href="/common/style/NotoSansKR.css">
+    <style type="text/css">
+      body{background-color:#454545;text-align:center;}
+      svg{overflow:visible;margin-top:50px;}
+      circle{transform:rotate(121deg);transform-origin: 50% 50%;}
+      .circle-default{stroke-dasharray:540;}
+      .circle-range{stroke-dasharray:0 655;
+        animation: range .8s ease forwards;
+      }
+      @keyframes range {
+        100% {
+          stroke-dasharray:45 610; /* (45 * n) */
+        }
+      }
+      text{background:#454545;fill:rgba(255,255,255,.8);}
+    </style>
+    <script src="/common/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script>
+    $(function(){
+      
+    });
+    </script>
+</head>
+<body>
+
+  <?xml version="1.0"?>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  width="200px" height="200px" viewBox="0 0 200 200" xml:space="preserve">
+    <g>
+      <circle cx="100" cy="100" r="104" fill="transparent" stroke="#ffffff" stroke-width="10px" class="circle-default">
+      </circle>
+      <circle cx="100" cy="100" r="104" fill="transparent" stroke="#d19a66" stroke-width="10px" class="circle-range">
+      </circle>
+      <text x="100" y="200" text-anchor="middle">1/12</text>
+    </g>
+  </svg>
+
+</script>
+</body>
+</html>
