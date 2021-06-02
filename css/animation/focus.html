@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>css > animation </title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi">
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="caa animation" />
+		<link rel="stylesheet" href="/common/style/default.css">
+		<link rel="stylesheet" href="/common/style/NotoSansKR.css">
+		<style type="text/css">
+		body{padding:20px;}
+		.input{margin-bottom:10px;padding:15px;border-radius:10px;background-color:#DFCceF;text-align:center;font-weight:bold;}
+		.input:focus{
+		-webkit-animation-name:myAnimation;
+		-webkit-animation-duration:.4s;
+		-webkit-animation-iteration-count:infinite;
+		-webkit-animation-timing-function:ease-in-out;
+		-webkit-animation-direction:alternate;
+		}
+		@-webkit-keyframes myAnimation{
+			0%{
+			color:hsl(50,50%,50%);
+			}
+			50%{
+			color:hsl(100,50%,50%);
+			}
+			100%{
+			color:hsl(150,50%,50%);
+			}
+		}
+		</style>
+		<script src="/common/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+		<script>
+		$(function(){
+
+		});
+		</script>
+	</head>
+	<body>
+		<div class="input" contenteditable="true">
+			contenteditable true
+		</div>
+
+		<div class="input" contenteditable="false">
+			contenteditable false
+		</div>
+	</body>
+</html>
