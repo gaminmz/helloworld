@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>monthpicker</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="-1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="monthpicker" />
+		<link rel="stylesheet" href="/common/style/default.css">
+		<link rel="stylesheet" href="/common/style/guide.css">
+		<link rel="stylesheet" href="/common/style/NotoSansKR.css">
+		<style type="text/css">
+		/**/
+		body{padding:20px;}
+		.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{background-color:#98c7df;color:#ffffff;}
+		.ui-state-disabled{opacity:.4;}
+		.mtz-monthpicker.ui-datepicker-header{position:relative;border-top:1px solid;border-bottom:1px solid #ececec;}
+		.mtz-monthpicker.ui-datepicker-header:after{display:block;content:"";position:absolute;top:16px;right:35%;width:5px;height:5px;border-right:2px solid #343434;border-bottom:2px solid #343434;transform:rotate(45deg);}
+		.mtz-monthpicker{border-collapse:separate;border-spacing:5px;}
+		.mtz-monthpicker tr{padding:5px 0;}
+		.mtz-monthpicker select{height:40px;padding:0 40%;border-color:transparent;font-size:20px;line-height:40px;}
+		</style>
+	</head>
+	<body>
+		<!-- content -->
+		<div id="monthpicker" class="box-datepicker">
+		</div>
+
+		<script src="/common/js/jquery-1.12.4.js" type="text/javascript"></script>
+		<script src="/common/js/jquery.mtz.monthpicker.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function () {
+					options = {
+							pattern: 'yyyy-mm',
+							selectedYear: 2021,
+							startYear: 2021,
+							finalYear: 2022,
+							monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+					};
+					$('#monthpicker').monthpicker(options);
+			});
+
+			$(window).load(function () {
+					$('#monthpicker').monthpicker('disableMonths', [1, 2, 3, 4, 5, 6], "show");
+
+					for (var i = 0; i < $('#monthpicker').length; i++) {
+							$($('#monthpicker')[i]).monthpicker().bind('monthpicker-change-year', function (e, year) {
+									var item = $(e.currentTarget);
+									if (year === '2021') {
+											$('#monthpicker').monthpicker('disableMonths', [1, 2, 3, 4, 5, 6]);
+									}
+									else if (year === '2022') {
+											$('#monthpicker').monthpicker('disableMonths', [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+									}
+							});
+					};
+			});
+		</script>
+	</body>
+</html>
