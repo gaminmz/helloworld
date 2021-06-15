@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>css cubic-bezier</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="-1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="cubic-bezier" />
+		<link rel="stylesheet" href="/common/style/default.css">
+		<link rel="stylesheet" href="/common/style/guide.css">
+		<link rel="stylesheet" href="/common/style/NotoSansKR.css">
+		<style type="text/css">
+		/**/
+		body{display:flex;align-items:center;background-color:#1f2631;}
+		.wrap{overflow:hidden;position:relative;width:80%;max-width:400px;height:30%;margin:0 auto;box-shadow:0px 0px 50px -10px rgba(30,100,190,.5);}
+		.box{height:100%;background-color:#13181B;}
+		.btn-detail{position:absolute;bottom:20px;right:20px;width:60px;height:60px;border-radius:60px;border:none;background-color:#BE0A3C;outline:none;
+		transition:all .6s cubic-bezier(.41,0,.38,1);}
+		.active .btn-detail{transform-origin:80% 80%;transform:scale(15);}
+		</style>
+	</head>
+	<body>
+		<section class="wrap">
+			<article class="box">
+				<button class="btn-detail"></button>
+			</article>
+		</section>
+
+		<script src="/common/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+		<script>
+		$(function(){
+			$(".btn-detail").on("click",function(){
+				$(this).parent().toggleClass("active");
+			});
+		});
+		</script>
+
+	</body>
+</html>
