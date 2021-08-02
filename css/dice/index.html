@@ -40,9 +40,15 @@
 
       function diceNum(e){
         const stateNum = $(e).attr("name");
-        console.log(stateNum);
+        //console.log(stateNum);
         $(".dice").removeClass().addClass("dice diceNum"+stateNum)
-      }
+      };
+
+      function randomNum(){
+        r=Math.floor(Math.random()*($(".dice>div").length));
+        //console.log(r)
+        $(".btn>input").eq(r).trigger("click")
+      };
     </script>
   </head>
   <body>
@@ -62,6 +68,7 @@
         <input type="button" value="num4" name="4" onClick="diceNum(this)"/>
         <input type="button" value="num5" name="5" onClick="diceNum(this)"/>
         <input type="button" value="num6" name="6" onClick="diceNum(this)"/>
+        <input type="button" value="random" onClick="randomNum()"/>
       </div>
     </section>
   </body>
