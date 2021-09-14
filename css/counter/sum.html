@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>css > counter sum</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="css counter sum" />
+    <link rel="stylesheet" href="/common/style/default.css">
+    <link rel="stylesheet" href="/common/style/NotoSansKR.css">
+    <style type="text/css">
+      body{padding:20px;}
+      .box-total{grid-row:1;grid-column:1/6;}
+      .box-total span{display:block;background-color:gold;}
+      .box-checked{display:grid;padding:20px;border:3px solid lightblue;counter-reset:sum;grid-template-columns:repeat(6, max-content);}
+      .box-checked label{display:inline-block;padding:5px 10px;background-color:lightgreen;}
+      .box-checked input{width:0;height:0;visibility:hidden;}
+      .box-checked input:checked + label{background-color:lightgray;}
+
+      #num1:checked{counter-increment:sum 1;}
+      #num2:checked{counter-increment:sum 2;}
+      #num3:checked{counter-increment:sum 3;}
+      #num4:checked{counter-increment:sum 4;}
+      #num5:checked{counter-increment:sum 5;}
+      #num6:checked{counter-increment:sum 6;}
+      #num7:checked{counter-increment:sum 7;}
+      #num8:checked{counter-increment:sum 8;}
+      #num9:checked{counter-increment:sum 9;}
+      #num10:checked{counter-increment:sum 10;}
+      .total-checked:after{content:counter(sum);}
+    </style>
+    <script src="/common/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script>
+    $(function(){
+      
+    });
+    </script>
+</head>
+<body>
+  <div class="box-checked">
+    <input type="checkbox" id="num1"><label for="num1">1</label>
+    <input type="checkbox" id="num2"><label for="num2">2</label>
+    <input type="checkbox" id="num3"><label for="num3">3</label>
+    <input type="checkbox" id="num4"><label for="num4">4</label>
+    <input type="checkbox" id="num5"><label for="num5">5</label>
+    <input type="checkbox" id="num6"><label for="num6">6</label>
+    <input type="checkbox" id="num7"><label for="num7">7</label>
+    <input type="checkbox" id="num8"><label for="num8">8</label>
+    <input type="checkbox" id="num9"><label for="num9">9</label>
+    <input type="checkbox" id="num10"><label for="num10">10</label>
+    <div class="box-total">
+      <span class="total-checked">합: </span>
+    </div>
+  </div>
+</body>
+</html>
