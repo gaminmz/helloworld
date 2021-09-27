@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>체크박스, checkbox</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="-1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="checkbox" />
+		<link rel="stylesheet" href="/common/style/default.css">
+		<link rel="stylesheet" href="/common/style/guide.css">
+		<link rel="stylesheet" href="/common/style/NotoSansKR.css">
+		<style type="text/css">
+		/**/
+		</style>
+	</head>
+	<body>
+
+		<form action="#">
+			<fieldset>
+				<legend>designed</legend>
+				<div class="opacity">
+					<input type="checkbox" id="r06" name="radi"/><label for="r06">B타이틀 01</label>
+					<input type="checkbox" id="r07" name="radi"/><label for="r07">B타이틀 02</label>
+					<input type="checkbox" id="r08" name="radi"/><label for="r08">B타이틀 03</label>
+					<input type="checkbox" id="r09" name="radi"/><label for="r09">C타이틀 01</label>
+					<input type="checkbox" id="r10" name="radi"/><label for="r10">C타이틀 02</label>
+					<div class="box-btn-flex"><button type="button" class="btn" disabled="disabled">확인</button></div>
+				</div>
+			</fieldset>
+		</form>
+
+		<script src="/common/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			function ui_check(checkName){
+				$('input[type="checkbox"]',checkName).click(function(){
+					idInput = $(this).attr('id');
+					labelCk = $(checkName).find('label[for="'+idInput+'"]')
+
+					if($(labelCk).hasClass('checked')){
+						$(this).removeAttr('checked')
+						$(labelCk).removeClass('checked')
+						
+					}else{
+						$(this).attr('checked','checked')
+						$(labelCk).addClass('checked')
+					};
+					
+					least=$(this).attr('name');
+					howmany=$('input:checkbox[name='+least+']:checked').length;
+					console.log(howmany)
+					if(howmany != 0){
+						$('.btn',checkName).removeAttr('disabled')
+					}else{
+						$('.btn',checkName).attr('disabled','disabled')
+					};
+				});
+			};
+			ui_check('.opacity')
+		</script>
+	</body>
+</html>

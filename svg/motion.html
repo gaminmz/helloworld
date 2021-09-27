@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>svg > animate motion</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi">
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="svg animate motion" />
+		<link rel="stylesheet" href="/common/style/default.css">
+		<link rel="stylesheet" href="/common/style/NotoSansKR.css">
+    <style type="text/css">
+      body{background-color:#454545;text-align:center;}
+      svg{overflow:visible;margin-top:50px;}
+      
+    </style>
+    <script src="/common/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script>
+    $(function(){
+      
+    });
+    </script>
+</head>
+<body>
+
+  <?xml version="1.0"?>
+  <svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!-- Draw the outline of the motion path in grey, along with 2 small circles at key points -->
+    <symbol id="sym01">
+      <path d="M100,100 A120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110,z" stroke="lightgrey" stroke-width="2" fill="none" id="theMotionPath"/>
+
+      <!-- Red circle which will be moved along the motion path. -->
+      <circle cx="" cy="" r="5" fill="blue">
+        <animateMotion dur="6s" repeatCount="indefinite">
+          <mpath xlink:href="#theMotionPath"/>
+        </animateMotion>
+      </circle>
+    </symbol>
+
+    <use href="#sym01" x="0" y="0"/>
+    <use href="#sym01" x="0" y="200"/>
+
+
+      <path d="M200,300 a120,120 -45 0,1 110 10 A120,120 -45 0,1 10,110,z" stroke="orange" stroke-width="2" fill="none" id="linemotion"/>
+
+      <!-- Red circle which will be moved along the motion path. -->
+      <circle cx="" cy="" r="5" fill="red">
+        <animateMotion dur="6s" repeatCount="indefinite">
+          <mpath xlink:href="#linemotion"/>
+        </animateMotion>
+      </circle>
+  </svg>
+
+
+</body>
+</html>

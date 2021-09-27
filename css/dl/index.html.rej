@@ -1,8 +1,0 @@
-diff a/css/dl/index.html b/css/dl/index.html	(rejected hunks)
-@@ -0,5 +0,6 @@
- <!DOCTYPE html>
- <html lang="ko">
-+<head>
- <meta charset="utf-8">
- <title>Border</title>
- <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
