@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>css > hamburger menu</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi">
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="hamburger menu" />
+		<link rel="stylesheet" href="/common/style/default.css">
+		<link rel="stylesheet" href="/common/style/NotoSansKR.css">
+		<style type="text/css">
+			body{background-color:#f5f5f5;}
+
+			.header{position:relative;width:100%;height:50px;background-color:#ffffff;box-shadow:0 4px 6px rgba(0,0,0,.15);z-index:10;}
+			.logo{color:#9f9f9f;font-weight:400;text-align:center;font-size:.95rem;line-height:50px;}
+			.cart{display:block;position:absolute;top:5px;right:15px;width:40px;height:40px;border-radius:40px;background:#23221E url("/css/hamburger/images/cart.png") no-repeat 50% 50%;font:0/0 a;text-align:right;}
+			.cart .num{display:inline-block;min-width:15px;border-radius:100%;background-color:#E24925;color:#ffffff;line-height:15px;font-size:.6rem;font-style:normal;text-align:center;}
+			.btn-menu{display:block;position:absolute;top:5px;left:15px;width:40px;height:40px;padding:5px 10px;border:none;background-color:#ffffff;font:0/0 a;cursor:pointer;}
+			.btn-menu i{display:block;position:absolute;width:20px;height:2px;background-color:#6F6F6F;transition:all 0.7s cubic-bezier(0.230, 1.000, 0.320, 1.000);}
+			.btn-menu .top{top:13px;}
+			.btn-menu .mid{top:20px;}
+			.btn-menu .btm{top:27px;}
+			.btn-menu.active{}
+			.btn-menu.active .top{top:20px;width:22px;margin-left:-1px;transform-origin:50% 50%;transform:rotate(90deg);}
+			.btn-menu.active .mid{left:9px;top:auto;bottom:10px;width:14px;transform:rotate(45deg);}
+			.btn-menu.active .btm{right:9px;top:auto;bottom:10px;width:14px;transform:rotate(-45deg);}
+
+			.search-wrap{display:-webkit-box;display:-webkit-flex;display:flex;background-color:#ffffff;padding:15px 20px;margin-top:-60px;transition:all 0.7s cubic-bezier(0.175, 0.885, 0.320, 1.275);}
+			.search-wrap .txt-search,.search-wrap .btn-search{display:block;height:30px;}
+			.search-wrap .txt-search{-webkit-box-flex:1;-webkit-flex:1;flex:1;padding:0 15px;border:1px solid #D8D8D8;border-radius:30px;background-color:#EEEEEE;}
+			.search-wrap .btn-search{width:90px;margin-left:10px;}
+
+			.nav{}
+			.nav-list{position:absolute;width:100%;height:0;box-sizing:border-box;z-index:1;}
+			.nav-list>li{list-style:none;height:60px;margin:0px 10px;transition:all 0.7s cubic-bezier(0.230, 1.000, 0.320, 1.000);}
+			.nav-list>li:nth-child(odd){background-color:rgba(226,73,37,1);transform:perspective(360px) rotateX(-90deg);transform-origin:center top;}
+			.nav-list>li:nth-child(even){background-color:rgba(236,83,47,1);transform:perspective(360px) rotateX(90deg);transform-origin:center bottom;margin-top:-120px;}
+			.nav-list>li>a{display:block;padding:15px 10px;color:#ffffff;border-top:1px solid rgba(255,255,255,.3);line-height:2;font-size:.85rem;text-decoration:none;}
+			.num-count{display:inline-block;float:right;min-width:45px;padding:0 10px;border-radius:15px;background-color:#E7634A;color:#ffffff;font-size:.8rem;text-align:center;font-family:Verdana;box-sizing:border-box;}
+
+			.active .search-wrap{margin-top:0;box-shadow:0 4px 6px rgba(0,0,0,.15);}
+			.active .nav-list{height:auto;}
+			.active .nav-list>li{background-color:rgba(226,73,37,1);}
+			.active .nav-list>li:nth-child(odd){transform:perspective(360px) rotateX(0deg);}
+			.active .nav-list>li:nth-child(even){transform:perspective(360px) rotateX(0deg);margin-top:0px;}
+
+			.container{padding:10px;}
+			.cart-wrap{padding:15px;border-radius:8px;background-color:#ffffff;}
+			.cart-list{margin-bottom:15px;}
+			.cart-list>li{padding:10px 0;border-bottom:1px solid #ebebeb;display:-webkit-box;display:-webkit-flex;display:flex;
+			transform-origin:50% 0%;transform:scale(.8);opacity:.8;
+			transition:all 1.5s cubic-bezier(0.230, 1.000, 0.320, 1.000);}
+			.cart-list figure,.cart-list .prod-info{}
+			.cart-list figure{margin-right:10px;}
+			.cart-list figure img{width:100px;}
+			.prod-title{letter-spacing:-0.04rem;}
+			.prod-title em{display:block;font-size:1rem;}
+			.prod-title small{color:#a9a9a9;font-size:.75rem;}
+			.cart-list.active>li{transform-origin:50% 50%;transform:scale(1);opacity:1;}
+			.btn-checkout{display:block;padding:7px 0;border:1px solid rgb(226, 226, 226);border-radius:20px;background-color:#EFEFEF;text-align:center;}
+
+			.cart-list input{width:50%;font-size:1rem;}
+			output{font-size:1rem;}
+			.cart-list select{width:46%;height:20px;border:none;font-size:.85rem;line-height:1;}
+			.price-sum{margin-top:10px;text-align:center;}
+		</style>
+		<script src="/common/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+		<script>
+		$(function(){
+			$(".btn-menu").on("click",function(){
+          $(this).toggleClass("active");
+          $(".nav").toggleClass("active");
+          $(".cart-list").toggleClass("active");
+      });
+      $(".nav-list a").on("click",function(){
+          event.preventDefault()
+          $(".nav").removeClass("active");
+          $(".btn-menu").removeClass("active");
+          $(".cart-list").addClass("active");
+      });
+		});
+		</script>
+	</head>
+	<body>
+
+		<header class="header">
+			<h1 class="logo"><a href="#">helloworld.com</a></h1>
+			<button type="button" class="btn-menu"><span>Menu</span> <i class="top"></i><i class="mid"></i><i class="btm"></i></button>
+			<a href="#" class="cart">Cart <i class="num">3</i></a>
+		</header>
+		<nav class="nav">
+			<div class="search-wrap"><input type="search" placeholder="search" class="txt-search"/></div>
+			<ul class="nav-list">
+				<li><a href="#m1">Hello! Jone Doe</a></li>
+				<li><a href="#m2">Man</a></li>
+				<li><a href="#m3">Woman</a></li>
+				<li><a href="#m4">Wish List <span class="num-count">27</span></a></li>
+				<li><a href="#m5">Cart <span class="num-count">3</span></a></li>
+				<li><a href="#m6">Orders <span class="num-count">1</span></a></li>
+				<li><a href="#m7">History <span class="num-count">143</span></a></li>
+			</ul>
+		</nav>
+		<div class="container">
+			<form oninput="x.value=(a1.value * a2.value)+(b1.value * b2.value)+(c1.value * c2.value)">
+			<section class="cart-wrap">
+				<ul class="cart-list active">
+					<li>
+						<figure><img src="/css/hamburger/images/temp1.jpg" alt="" /></figure>
+						<div class="prod-info">
+							<p class="prod-title">
+								<em>Nike Air Max 1 Pinnacle</em>
+								<small>Blank State</small>
+							</p>
+							<input type="number" id="a1" value="35000" readonly="readonly">
+							<select name="" id="a2">
+								<option value="1" selected>Quantity: 1</option>
+								<option value="2">Quantity: 2</option>
+								<option value="3">Quantity: 3</option>
+								<option value="4">Quantity: 4</option>
+								<option value="5">Quantity: 5</option>
+								<option value="6">Quantity: 6</option>
+								<option value="7">Quantity: 7</option>
+								<option value="8">Quantity: 8</option>
+								<option value="9">Quantity: 9</option>
+								<option value="10">Quantity: 10</option>
+							</select>
+						</div>
+					</li>
+					<li>
+						<figure><img src="/css/hamburger/images/temp2.jpg" alt="" /></figure>
+						<div class="prod-info">
+							<p class="prod-title">
+								<em>Knitted Beanie</em>
+								<small>12 luch Long</small>
+							</p>
+							<input type="number" id="b1" value="41000" readonly="readonly">
+							<select name="" id="b2">
+								<option value="1" selected>Quantity: 1</option>
+								<option value="2">Quantity: 2</option>
+								<option value="3">Quantity: 3</option>
+								<option value="4">Quantity: 4</option>
+								<option value="5">Quantity: 5</option>
+								<option value="6">Quantity: 6</option>
+								<option value="7">Quantity: 7</option>
+								<option value="8">Quantity: 8</option>
+								<option value="9">Quantity: 9</option>
+								<option value="10">Quantity: 10</option>
+							</select>
+						</div>
+					</li>
+					<li>
+						<figure><img src="/css/hamburger/images/temp3.jpg" alt="" /></figure>
+						<div class="prod-info">
+							<p class="prod-title">
+								<em>Casual Book Bag</em>
+								<small>College Daypack</small>
+							</p>
+							<input type="number" id="c1" value="48500" readonly="readonly">
+							<select name="" id="c2">
+								<option value="1" selected>Quantity: 1</option>
+								<option value="2">Quantity: 2</option>
+								<option value="3">Quantity: 3</option>
+								<option value="4">Quantity: 4</option>
+								<option value="5">Quantity: 5</option>
+								<option value="6">Quantity: 6</option>
+								<option value="7">Quantity: 7</option>
+								<option value="8">Quantity: 8</option>
+								<option value="9">Quantity: 9</option>
+								<option value="10">Quantity: 10</option>
+							</select>
+						</div>
+					</li>
+				</ul>
+				<a href="#" class="btn-checkout">Process to checkout -&gt;</a>
+				<div class="price-sum">Total : <output name="x" for="">124500</output></div>
+			</section>
+			</form>
+		</div>
+
+	</body>
+</html>

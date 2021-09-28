@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>local storage</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="-1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="local storage" />
+		<link rel="stylesheet" href="/common/style/default.css">
+		<link rel="stylesheet" href="/common/style/guide.css">
+		<link rel="stylesheet" href="/common/style/NotoSansKR.css">
+		<style type="text/css">
+		/**/
+		body{padding:20px;}
+		.popWrap{padding:20px;border:3px solid lightgreen;background-color:#efefef;}
+		</style>
+	</head>
+	<body>
+		<h1>LocalStorage</h1>
+
+		<div class="popWrap" id="ly">
+			<button type="button" id="btnToday">&times;20초간 열지 않기</button>
+			<button type="button" id="btnClose" onClick="javascript:document.getElementById('ly').style.display='none'">&times;닫기</button>
+		</div>
+		<script src="/common/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			var btnToday = document.getElementById('btnToday');
+			var nowDate = new Date();
+			
+			if(localStorage.getItem('saveEventTime')){
+				var saveDate = localStorage.getItem('saveEventTime', saveDate);
+				var savedDate = new Date(saveDate);
+				var msecPerMinute = 1000 * 60;
+				var msecPerHour = msecPerMinute * 60;
+				var msecPerDay = msecPerHour * 24;
+				
+				var interval = nowDate.getTime() - savedDate.getTime();
+				var hours = Math.floor(interval / msecPerHour );
+				interval = interval - (hours * msecPerHour );
+				var minutes = Math.floor(interval / msecPerMinute );
+				interval = interval - (minutes * msecPerMinute );
+
+				var seconds = Math.floor(interval / 1000 );
+
+				if(seconds >= 20){ //20초
+					document.getElementById('ly').style.display = "block";
+					localStorage.removeItem('saveEventTime');
+				} else {
+					document.getElementById('ly').style.display = "none";
+					document.write(hours + " 시간, " + minutes + " 분, " + seconds + " 초");
+				};
+			};
+			
+			btnToday.onclick = function(){
+				document.getElementById('ly').style.display = "none";
+				var saveDate = new Date();
+				localStorage.setItem('saveEventTime', saveDate);
+			};
+
+			function loadOpen(){
+				firstDate=localStorage.getItem("open",firstDate);
+				saveFirstDate=new Date(firstDate)
+				nowTime=saveFirstDate.getTime()
+
+				closeDate=localStorage.getItem("close");
+				saveCloseDate=new Date(closeDate)
+				closeTime=saveCloseDate.getTime()
+
+				durationTime=parseInt((nowTime-closeTime)/1000) //(로딩시간-닫기시간) 밀리세컨드를 초 단위로 반환한다
+			};
+
+			$("document").ready(function(){
+				firstDate=new Date();
+				localStorage.setItem("open",firstDate) //첫 로딩 시 시간 로컬스토리지에 저장
+				loadOpen()
+				if(localStorage.getItem("close")){
+					console.log("있음")
+				}else{
+					console.log("없음")
+				};
+			});
+		</script>
+
+	</body>
+</html>

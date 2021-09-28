@@ -44,11 +44,20 @@ input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-ou
 input[type="search"]{-webkit-appearance:textfield;box-sizing:border-box;}
 input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
 select{height:28px;border:1px solid #cccccc;color:#666666;line-height:28px;-webkit-appearance:none;}
+input[type="range"]{-webkit-appearance:none;width:270px;height:8px;border:1px solid #2E333A;border-radius:8px;background:#5384D9;box-shadow:inset 0 1px 0 #7DA5EC;}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;position:relative;width:30px;height:30px;border:1px solid #2E333A;border-radius:30px;background-color:#767D8C;box-shadow:inset 0 1px 0 rgba(255,255,255,.2);}
+input[type="range"]::-webkit-slider-thumb:hover{border-width:2px;border-color:#C5DAFD;}
+
+input[type="range"]::-moz-range-track{-moz-appearance:none;width:270px;height:8px;border:1px solid #2E333A;border-radius:8px;background:#5384D9;box-shadow:inset 0 1px 0 #7DA5EC;}
+input[type="range"]::-moz-range-thumb{-moz-appearance:none;width:30px;height:30px;border:1px solid #2E333A;border-radius:30px;background:#767D8C;box-shadow:inset 0 1px 0 rgba(255,255,255,.2);}
 button[disabled],input[type="radio"][disabled],input[type="checkbox"][disabled],input[type="range"][disabled]{opacity:.5;cursor:not-allowed;filter:grayscale(1);}
 input[type="text"],input[type="password"],input[type="tel"]{padding:0 3px;}
 input[type="text"][disabled],input[type="text"][readonly],input[type="tel"][disabled],input[type="tel"][readonly]{background-color:#f1f1f1;}
 legend,caption,hr[hidden="hidden"],.hidden{display:none !important;}
 a,button,input,img,div,span{-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;outline:none;}
+progress{width:100%;height:15px;padding:1px;border:none;border-radius:7px;vertical-align:top;box-shadow:inset 0 5px 3px rgba(0,0,0,.5);}
+progress::-webkit-progress-bar{background-color:#242730;border-radius:7px;}
+progress::-webkit-progress-value{background-color:#51B3FA;border-radius:7px;box-shadow:inset 1px 1px 0 rgba(255,255,255,.5);}
 em,address,i,dfn{font-style:normal;}
 abbr{text-decoration:none;}
 b,strong{font-weight:400;}
